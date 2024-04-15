@@ -18,7 +18,7 @@ To train the model, you can use the provided `train.py` script. You have two opt
 
 ### Using Given Dataset
 ```bash
-python train.py
+python src/train.py
 ```
 This will start training the model with the provided dataset. You can configure the parameters in the `train.py` script if needed.
 
@@ -41,13 +41,17 @@ This will start training the model with the provided dataset. You can configure 
 We also provide a summarization script, `summarize_model.py`, which summarizes the trained model. It provides information about the vocabulary, hyperparameters, and the model architecture.
 
 ```bash
-python summarize_model.py
+python src/summarize_model.py
 ```
 You need to provide the path to the trained model, hyperparameters file, and vocabulary file as arguments.
 
 ## Classifier Script
 
-To classify text using the trained model, you can use the `classify_text.py` script. Provide the paths to the trained model, hyperparameters file, and vocabulary file as arguments.
+To classify text using the trained model, you can use the `src/classify_text.py` script. Provide the paths to the trained model, hyperparameters file, and vocabulary file as arguments.
+
+```bash
+python src/classify_text.py
+```
 
 ## Getting Started
 
