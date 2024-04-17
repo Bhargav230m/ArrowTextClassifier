@@ -1,0 +1,6 @@
+torch==2.2.2
+torchsummary==1.4.5
+pandas==2.2.2
+scikit-learn==1.4.2
+tqdm==4.66.2
+numpy==1.26.4

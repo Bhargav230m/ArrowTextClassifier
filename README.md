@@ -20,6 +20,7 @@ To train the model, you can use the provided `train.py` script. You have two opt
 ```bash
 python src/train.py
 ```
+
 This will start training the model with the provided dataset. You can configure the parameters in the `train.py` script if needed.
 
 ### Using Your Own Custom Dataset
@@ -34,6 +35,12 @@ This will start training the model with the provided dataset. You can configure 
 {"label":"normal","example":"Hey there!"}
 {"label":"normal","example":"Hi!"}
 {"label":"toxic","example":"You suck!"}
+```
+
+After you have finished collecting the training data, you can use the following command below
+
+```bash
+python src/train.py <path/to/your/dataset>
 ```
 
 ## Summarize Script
@@ -58,6 +65,7 @@ python src/classify_text.py
 A pretrained model has been provided in the `pretrained_model` directory to help you get started. Keep in mind that this is just a test model and is not recommended for large-scale use, only for testing purposes.
 
 This is a simple model that can be customized according to your needs. Feel free to explore and make any modifications you require.
+We have also made our own colab [notebook](https://colab.research.google.com/drive/1fGDLICkctfdpTgLoh_Bouv-NY-q-kdlQ?usp=sharing)
 
 ---
 This project was created by Bhargav230m and is provided under the MIT License license. For any questions or feedback, please contact technologypower24@gmail.com.

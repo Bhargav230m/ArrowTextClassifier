@@ -6,11 +6,12 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import f1_score, precision_score, recall_score
-import intel_extension_for_pytorch as ipex
 from model import TextCNN
 from tokenizer import Tokenizer
 from tqdm import tqdm
 import pickle
+import sys
+import os
 
 class TextClassificationDataset(Dataset):
     def __init__(self, dataframe, tokenizer, max_len):
@@ -98,7 +99,11 @@ def evaluate_model(model, val_loader, criterion, device):
 
 def main():
     # Load dataset, should be parquet
-    df = pd.read_parquet("classification/dataset.parquet")
+    if len(sys.argv) > 1 and os.path.isfile(sys.argv[1]):
+        df = pd.read_parquet(sys.argv[1])
+    else:
+        print("No dataset provided, defaulting to the default dataset")
+        df = pd.read_parquet("classification/dataset.parquet")
     
     # Tokenize texts and build vocabulary..
     tokenizer = Tokenizer()
