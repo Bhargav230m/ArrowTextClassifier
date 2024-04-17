@@ -6,6 +6,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import f1_score, precision_score, recall_score
+import intel_extension_for_pytorch as ipex
 from model import TextCNN
 from tokenizer import Tokenizer
 from tqdm import tqdm
@@ -113,13 +114,13 @@ def main():
     
     # Define model hyperparameters
     VOCAB_SIZE = len(tokenizer.vocab) + 1
-    EMBEDDING_DIM = 100
-    NUM_FILTERS = 100
+    EMBEDDING_DIM = 500
+    NUM_FILTERS = 500
     FILTER_SIZES = [3, 4, 5]
     OUTPUT_DIM = len(label_encoder.classes_)
-    DROPOUT = 0.7
+    DROPOUT = 0.2
     BATCH_SIZE = 128
-    NUM_EPOCHS = 500
+    NUM_EPOCHS = 100
     WEIGHT_DECAY = 0.001
 
     # Saving hyperparameters

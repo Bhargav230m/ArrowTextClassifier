@@ -4,9 +4,9 @@ from model import TextCNN
 import pickle
 import sys
 
-def load_model(model_path, hyperparameters):
+def load_model(model_path, hyperparameters, device):
     model = TextCNN(hyperparameters["vocab_size"], hyperparameters["embedding_dim"], hyperparameters["num_filters"], hyperparameters["filter_sizes"], hyperparameters["output_dim"], hyperparameters["dropout"])
-    model.load_state_dict(torch.load(model_path))
+    model.load_state_dict(torch.load(model_path, map_location=torch.device(device)))
     model.eval()
     return model
 
@@ -24,10 +24,10 @@ vocabulary = load_vocabulary(input("Enter .vocab path: "))
 
 # Load model
 model_path = input("Please specify the model path: ")  # Path to your trained model
-model = load_model(model_path, hyperparameters)
+device = torch.device('cpu') # 'cuda' if torch.cuda.is_available() else 'cpu' <-- Use this if you have installed cuda torch
+model = load_model(model_path, hyperparameters, device)
 
 # Display model summary
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 model = model.to(device)
 
 sys.stdout = open("model_summary.txt", "w", encoding="utf-8")
