@@ -5,7 +5,7 @@ with open("README.md", "r") as f:
 
 setup(
     name="ArrowTextClassifier",
-    version="1.0.0",
+    version="1.0.1",
     author="techpowerb",
     author_email="technologypower24@gmail.com",
     description="ArrowTextClassifier is a simple text classification tool written in pytorch that allows you to train, summarize, and use text classification models for various tasks.",
@@ -29,7 +29,7 @@ setup(
     python_requires=">=3.6",
     install_requires=[
         "torch==2.2.2",
-        "torchsummary==1.4.5",
+        "torchsummary==1.5.1",
         "pandas==2.2.2",
         "scikit-learn==1.4.2",
         "tqdm==4.66.2",
