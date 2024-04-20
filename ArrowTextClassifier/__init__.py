@@ -1,4 +1,4 @@
-from main import Model
+from ArrowTextClassifier.main import Model
 
 PACKAGE_NAME = "ARROW_TEXT_CLASSIFIER"
 FUTURE = "NEW DATASETS AND MODEL COMING SOON!!"

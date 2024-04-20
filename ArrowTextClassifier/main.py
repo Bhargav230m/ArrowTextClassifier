@@ -1,6 +1,6 @@
-from summarize_model import summarize_model
-from classify_text import classifyText
-from train import train
+from ArrowTextClassifier.summarize_model import summarize_model
+from ArrowTextClassifier.classify_text import classifyText
+from ArrowTextClassifier.train import train
 
 
 class Model:

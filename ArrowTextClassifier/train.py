@@ -6,12 +6,10 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import f1_score, precision_score, recall_score
-from model import TextCNN
-from tokenizer import Tokenizer
+from ArrowTextClassifier.model import TextCNN
+from ArrowTextClassifier.tokenizer import Tokenizer
 from tqdm import tqdm
 import pickle
-import sys
-import os
 
 
 class TextClassificationDataset(Dataset):

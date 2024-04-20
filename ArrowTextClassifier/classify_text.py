@@ -1,7 +1,7 @@
 import torch
-from model import TextCNN
+from ArrowTextClassifier.model import TextCNN
 import numpy as np
-from tokenizer import Tokenizer
+from ArrowTextClassifier.tokenizer import Tokenizer
 import pickle
 
 def load_tokenizer(vocab_file):

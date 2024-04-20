@@ -1,6 +1,6 @@
 from torchsummary import summary
 import torch
-from model import TextCNN
+from ArrowTextClassifier.model import TextCNN
 import pickle
 import sys
 
