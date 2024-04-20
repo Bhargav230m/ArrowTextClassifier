@@ -19,21 +19,24 @@ def load_hparams(hparams_path):
         return pickle.load(f)
 
 
-hyperparameters = load_hparams(input("Enter .hparams path: "))
-vocabulary = load_vocabulary(input("Enter .vocab path: "))
+def summarize_model(model_path, hparams_path, vocab_path, device, modelSummary_write_path):
+    hyperparameters = load_hparams(hparams_path)
+    vocabulary = load_vocabulary(vocab_path) if vocab_path else None
 
-# Load model
-model_path = input("Please specify the model path: ")  # Path to your trained model
-device = torch.device('cpu') # 'cuda' if torch.cuda.is_available() else 'cpu' <-- Use this if you have installed cuda torch
-model = load_model(model_path, hyperparameters, device)
+    # Load model
+    device = torch.device(device)
+    model = load_model(model_path, hyperparameters, device)
+    
+    # Move the model to the device you gave
+    model = model.to(device)
 
-# Display model summary
-model = model.to(device)
-
-sys.stdout = open("model_summary.txt", "w", encoding="utf-8")
-summary(model, (200,))
-sys.stdout.close()
-
-with open("model_summary.txt", "a", encoding="utf-8") as f:
-    dataToWrite = f"\n\nHyperparameters config:\n{hyperparameters}\n\nVocabulary:\n{vocabulary}"
-    f.write(dataToWrite)
+    if modelSummary_write_path is not None:
+        with open("model_summary.txt", "w", encoding="utf-8") as f:
+            sys.stdout = f
+            summary(model, (200,))
+            sys.stdout = sys.__stdout__
+            dataToWrite = f"\n\nHyperparameters config:\n{hyperparameters}\n\nVocabulary:\n{vocabulary}"
+            f.write(dataToWrite)
+    else:
+        summary(model, (200,))
+        print(f"\n\nHyperparameters config:\n{hyperparameters}\n\nVocabulary:\n{vocabulary}")

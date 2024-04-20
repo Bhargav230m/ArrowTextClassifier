@@ -1,33 +1,35 @@
 # ArrowTextClassifier
 
-ArrowTextClassifier is a simple text classification tool written in pytorch that allows you to train, summarize, and use text classification models for various tasks.
+ArrowTextClassifier is a Python package for text classification tasks, offering functionalities to train, summarize, and classify text using convolutional neural network (CNN) architecture.
+
+## Installation
+
+You can install ArrowTextClassifier via pip:
+
+```bash
+pip install ArrowTextClassifier
+```
 
 ## How it Works
 
-ArrowTextClassifier uses a convolutional neural network (CNN) architecture for text classification. It tokenizes input text, embeds the tokens, applies convolutional filters over the embedded tokens to extract features, and then classifies the text into predefined categories.
+ArrowTextClassifier implements a convolutional neural network (CNN) architecture for text classification. It tokenizes input text, embeds the tokens, applies convolutional filters over the embedded tokens to extract features, and then classifies the text into predefined categories.
 
-## Model Architecture
+## Usage
 
-The CNN model consists of an embedding layer followed by multiple convolutional layers with different filter sizes. Max-pooling is applied over the output of convolutional layers to extract the most relevant features. Finally, a fully connected layer with dropout is used to classify the text into different categories.
+### Training
 
-## Training Script
+To train a text classification model, you can utilize the `train_model` method provided by the `Model` class:
 
-To train the model, you can use the provided `train.py` script. You have two options for training:
-1. Using the provided dataset in the `classification` folder.
-2. Using your own custom dataset.
+```python
+from ArrowTextClassifier import Model
 
-### Using Given Dataset
-```bash
-python src/train.py
+model = Model(name="your_model_name")
+model.train_model(dataset)
 ```
 
-This will start training the model with the provided dataset. You can configure the parameters in the `train.py` script if needed.
+#### How to make a dataset
 
-### Using Your Own Custom Dataset
-1. Prepare your dataset in Parquet format with each example containing a label and text.
-2. Add your dataset to the `classification` folder.
-3. Change the dataset path at line 100 of `train.py` to point to your custom dataset.
-4. Run `python train.py` to start training with your custom dataset.
+To make your own custom dataset for training you need to create a parquet file with the following format:
 
 *Example Parquet File*
 
@@ -37,35 +39,45 @@ This will start training the model with the provided dataset. You can configure 
 {"label":"toxic","example":"You suck!"}
 ```
 
-After you have finished collecting the training data, you can use the following command below
+After you have created the parquet file with the data in the format above, you can provide to the dataset to start training the model.
 
-```bash
-python src/train.py <path/to/your/dataset>
+### Summarization
+
+To summarize a trained model, you can use the `summarize` method:
+
+```python
+model.summarize(
+    model_path="path_to_your_model",
+    hyperparams_path="path_to_hyperparameters_file",
+    vocabulary_path="path_to_vocabulary_file",
+    modelSummary_write_path="path_to_write_model_summary"
+)
 ```
 
-## Summarize Script
+### Classification
 
-We also provide a summarization script, `summarize_model.py`, which summarizes the trained model. It provides information about the vocabulary, hyperparameters, and the model architecture.
+For classifying text using the trained model:
 
-```bash
-python src/summarize_model.py
-```
-You need to provide the path to the trained model, hyperparameters file, and vocabulary file as arguments.
-
-## Classifier Script
-
-To classify text using the trained model, you can use the `src/classify_text.py` script. Provide the paths to the trained model, hyperparameters file, and vocabulary file as arguments.
-
-```bash
-python src/classify_text.py
+```python
+result = model.classify(
+    model_path="path_to_your_model",
+    hyperparams_path="path_to_hyperparameters_file",
+    text="your_input_text",
+    vocabulary_path="path_to_vocabulary_file"
+)
+print(result)
 ```
 
 ## Getting Started
 
-A pretrained model has been provided in the `pretrained_model` directory to help you get started. Keep in mind that this is just a test model and is not recommended for large-scale use, only for testing purposes.
+This package provides tools for text classification tasks. You can explore and customize it according to your requirements. Refer to the documentation for detailed usage instructions.
 
-This is a simple model that can be customized according to your needs. Feel free to explore and make any modifications you require.
-We have also made our own colab [notebook](https://colab.research.google.com/drive/1fGDLICkctfdpTgLoh_Bouv-NY-q-kdlQ?usp=sharing)
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
 
 ---
-This project was created by Bhargav230m and is provided under the MIT License license. For any questions or feedback, please contact technologypower24@gmail.com.
+
+## Contact
+
+For any questions or feedback, please contact technologypower24@gmail.com or you can contact me at discord - techpowerb.
