@@ -70,7 +70,7 @@ print(result)
 
 ## Getting Started
 
-This package provides tools for text classification tasks. You can explore and customize it according to your requirements. Refer to the documentation for detailed usage instructions.
+This package provides tools for text classification tasks. You can explore and customize it according to your requirements. Refer to the documentation for detailed usage instructions. We have also made our own colab [notebook](https://colab.research.google.com/drive/1fGDLICkctfdpTgLoh_Bouv-NY-q-kdlQ?usp=sharing) to help you train a custom offensive language classifier using this.
 
 ## License
 
